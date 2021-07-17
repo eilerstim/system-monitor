@@ -8,8 +8,8 @@ using std::vector;
 // TODO: Return the aggregate CPU utilization
 float Processor::Utilization() { 
     
-    vector<long> stats = convertToLong(LinuxParser::CpuUtilization());
-    
+    vector<long> stats = toLong(LinuxParser::CpuUtilization());
+
     //calculate CPU usage
 
     //idle = idle +iowait
@@ -38,7 +38,7 @@ float Processor::Utilization() {
 
  }
 
- vector<long> Processor::convertToLong(vector<string> values) {
+ vector<long> Processor::toLong(vector<string> values) {
      vector<long> converted {};
      for (auto v:values) {
          try{

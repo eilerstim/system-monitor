@@ -25,11 +25,9 @@ vector<Process>& System::Processes() {
     for (int i:pids) {
         finalProcesses.emplace_back(Process(i));
     }
-    std::sort(finalProcesses.begin(), finalProcesses.end());
-    
-    // [](Process &a, Process &b) {
-    //  return (b.CpuUtilization() < a.CpuUtilization());
-    //    });
+    std::sort(finalProcesses.begin(), finalProcesses.end(),[](Process &a, Process &b) {
+     return (b.CpuUtilization() < a.CpuUtilization());
+       });
     processes_ = finalProcesses;
     return processes_;
  }

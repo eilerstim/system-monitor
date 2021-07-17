@@ -168,7 +168,11 @@ int LinuxParser::RunningProcesses() {
       std::istringstream linestream(line);
       while(linestream >> key >> value) {
         if (key == "procs_running") {
-          return stoi(value);
+          try {
+            return std::stoi(value);
+          } catch (const std::invalid_argument &arg) {
+            return 0;
+          }
         }
       }
     }

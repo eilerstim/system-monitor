@@ -49,9 +49,4 @@ string Process::User() { return LinuxParser::User(_pid); }
 // TODO: Return the age of this process (in seconds)
 long int Process::UpTime() { return LinuxParser::UpTime(_pid)/sysconf(_SC_CLK_TCK); }
 
-// TODO: Overload the "less than" comparison operator for Process objects
-// REMOVE: [[maybe_unused]] once you define the function
-bool Process::operator<(Process const& a) const {
-    return (this->getCpuUsage() < a.getCpuUsage());
-}
 

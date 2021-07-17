@@ -7,7 +7,7 @@ class Processor {
     public:
     Processor() : prevTotal(0.0), prevIdle(0.0) {};
     float Utilization();
-    std::vector<long> convertToLong(std::vector<std::string> values);
+    std::vector<long> toLong(std::vector<std::string> values);
 
   // TODO: Declare any necessary private members
  private:
