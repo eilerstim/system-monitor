@@ -13,19 +13,20 @@ float Processor::Utilization() {
     //calculate CPU usage
 
     //idle = idle +iowait
-    long idle = stats.at(LinuxParser::kIdle_) + stats.at(LinuxParser::kIOwait_);
+    float idle = stats.at(LinuxParser::kIdle_) + stats.at(LinuxParser::kIOwait_);
 
     //nonIdle = user + nice + system + irq + softirq + steal
-    long nonIdle = stats.at(LinuxParser::kUser_) + stats.at(LinuxParser::kNice_) +
+    float nonIdle = stats.at(LinuxParser::kUser_) + stats.at(LinuxParser::kNice_) +
                     stats.at(LinuxParser::kSystem_) + stats.at(LinuxParser::kIRQ_) +
-                    stats.at(LinuxParser::kSoftIRQ_) + stats.at(LinuxParser::kSteal_);
+                    stats.at(LinuxParser::kSoftIRQ_) + stats.at(LinuxParser::kSteal_) +
+                    stats.at(LinuxParser::kGuest_) + stats.at(LinuxParser::kGuestNice_);
     
     //total = idle + nonIdle
-    long total = idle + nonIdle;
+    float total = idle + nonIdle;
 
     //calculate differences
-    long totald = total - prevTotal;
-    long idled = idle - prevIdle;
+    float totald = total - prevTotal;
+    float idled = idle - prevIdle;
 
     //final percentage
     float cpuPercentage = (totald - idled)/totald;

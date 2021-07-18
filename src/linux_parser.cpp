@@ -117,12 +117,12 @@ vector<string> LinuxParser::CpuUtilization() {
   vector<string> stats{};
   string line;
   string key;
-  string user,nice,system,idle,iowait,irq,softirq,steal;
+  string user,nice,system,idle,iowait,irq,softirq,steal, guest, guest_nice;
   std::ifstream filestream(kProcDirectory + kStatFilename);
   if (filestream.is_open()) {
     while (std::getline(filestream, line)) {
       std::istringstream linestream(line);
-      while(linestream >> key >> user >> nice >> system >> idle >> iowait >> irq >> softirq >> steal) {
+      while(linestream >> key >> user >> nice >> system >> idle >> iowait >> irq >> softirq >> steal >> guest >> guest_nice) {
         if (key == "cpu") {
           stats.push_back(user);
           stats.push_back(nice);
@@ -132,6 +132,8 @@ vector<string> LinuxParser::CpuUtilization() {
           stats.push_back(irq);
           stats.push_back(softirq);
           stats.push_back(steal);
+          stats.push_back(guest);
+          stats.push_back(guest_nice);
           return stats;
         }
       }
