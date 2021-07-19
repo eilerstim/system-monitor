@@ -13,13 +13,13 @@ float Processor::Utilization() {
     //calculate CPU usage
 
     //idle = idle +iowait
-    float idle = stats.at(LinuxParser::kIdle_) + stats.at(LinuxParser::kIOwait_);
+    float idle = stats.at(LinuxParser::kIdle) + stats.at(LinuxParser::kIOwait);
 
     //nonIdle = user + nice + system + irq + softirq + steal
-    float nonIdle = stats.at(LinuxParser::kUser_) + stats.at(LinuxParser::kNice_) +
-                    stats.at(LinuxParser::kSystem_) + stats.at(LinuxParser::kIRQ_) +
-                    stats.at(LinuxParser::kSoftIRQ_) + stats.at(LinuxParser::kSteal_) +
-                    stats.at(LinuxParser::kGuest_) + stats.at(LinuxParser::kGuestNice_);
+    float nonIdle = stats.at(LinuxParser::kUser) + stats.at(LinuxParser::kNice) +
+                    stats.at(LinuxParser::kSystem) + stats.at(LinuxParser::kIrq) +
+                    stats.at(LinuxParser::kSoftIrq) + stats.at(LinuxParser::kSteal) +
+                    stats.at(LinuxParser::kGuest) + stats.at(LinuxParser::kGuestNice);
     
     //total = idle + nonIdle
     float total = idle + nonIdle;

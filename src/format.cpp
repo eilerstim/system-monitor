@@ -4,33 +4,25 @@
 
 using std::string;
 
-// TODO: Complete this helper function
-// INPUT: Long int measuring seconds
-// OUTPUT: HH:MM:SS
-// REMOVE: [[maybe_unused]] once you define the function
-string Format::ElapsedTime(long seconds) {
-  string totalTime = "00:00:00";
-  long temp = 0;
-  if (seconds > 0) {
-    //hours
-    temp = seconds / 3600;
-    totalTime = valueToString(temp) + ":";
-    //minutes
-    temp = (seconds / 60) % 60;
-    totalTime += valueToString(temp) + ":";
-    //seconds
-    temp = seconds % 60;
-    totalTime += valueToString(temp);
-  }
-
-  return totalTime;
-}
-
 // check if calculated number is smaller than 10 and return the appropriate
 // string
-std::string Format::valueToString(long temp) {
-  if (temp < 10)
-    return "0" + std::to_string(temp);
-  else
-    return std::to_string(temp);
+string formatSMH(int val){
+  string strval{""};
+  if (val < 10){
+    strval = "0" + std::to_string(val);
+  }
+  else{
+    strval = std::to_string(val);
+  }
+  return strval;
+}
+
+string Format::ElapsedTime(long seconds) {
+  int hours{0}, minutes{0};
+  string ftime{""};
+  minutes = seconds / 60;
+  hours = minutes / 60;
+
+  ftime = formatSMH(hours)+":"+formatSMH(int(minutes%60))+":"+formatSMH(int(seconds%60));
+  return ftime;
 }
