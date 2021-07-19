@@ -1,6 +1,8 @@
 # System-Monitor
 
-System Monitor for Linux (similar to the common htop application) built using Linux file system parsing and ncurses for graphical output
+System Monitor for Linux (similar to the common htop application) built using Linux file system parsing and ncurses for graphical output.
+
+This project was part of my [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
 
 ![System Monitor](images/monitor.png)
 

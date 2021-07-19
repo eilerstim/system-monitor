@@ -7,7 +7,6 @@
 
 #include "linux_parser.h"
 
-using std::stof;
 using std::string;
 using std::to_string;
 using std::vector;
@@ -53,6 +52,7 @@ string LinuxParser::Kernel() {
   return kernel;
 }
 
+// Read and return all active process IDs
 vector<int> LinuxParser::Pids() {
   vector<int> pids;
   DIR* directory = opendir(kProcDirectory.c_str());
