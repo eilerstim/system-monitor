@@ -22,4 +22,4 @@ This project uses [Make](https://www.gnu.org/software/make/). The Makefile has f
 
 ## Code Structure
 
-<img src"code_structure.png"/>
+<img src="code_structure.png"/>
